@@ -1,44 +1,17 @@
-#### Create 2 MySQL containers with master-slave row-based replication 
-
+#### 실행
 ```bash
 ./build.sh
 ```
 
-#### Make changes to master
+#### 마스터 DB / 테이블 생성 및 데이터 입력
 
 ```bash
 docker exec mysql_master sh -c "export MYSQL_PWD=111; mysql -u root auth -e 'create table code(code int); insert into code values (100), (200)'"
 ```
 
-#### Read changes from slave
-
+#### 슬레이브 DB / 데이터 확인
 ```bash
 docker exec mysql_slave sh -c "export MYSQL_PWD=111; mysql -u root auth -e 'select * from code \G'"
-```
-
-## Troubleshooting
-
-#### Check Logs
-
-```bash
-docker-compose logs
-```
-
-#### Start containers in "normal" mode
-
-> Go through "build.sh" and run command step-by-step.
-
-#### Check running containers
-
-```bash
-docker-compose ps
-```
-
-#### Clean data dir
-
-```bash
-rm -rf ./master/data/*
-rm -rf ./slave/data/*
 ```
 
 #### Run command inside "mysql_master"
