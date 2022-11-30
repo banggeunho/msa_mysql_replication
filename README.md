@@ -6,12 +6,12 @@
 #### 마스터 DB / 테이블 생성 및 데이터 입력
 
 ```bash
-docker exec mysql_master sh -c "export MYSQL_PWD=111; mysql -u root auth -e 'create table code(code int); insert into code values (100), (200)'"
+docker exec mysql_master sh -c "export MYSQL_PWD=111; mysql -u root {DB_NAME} -e 'create table test(test int); insert test code values (100), (200)'"
 ```
 
 #### 슬레이브 DB / 데이터 확인
 ```bash
-docker exec mysql_slave sh -c "export MYSQL_PWD=111; mysql -u root auth -e 'select * from code \G'"
+docker exec mysql_slave sh -c "export MYSQL_PWD=111; mysql -u root {DB_NAME} -e 'select * from test \G'"
 ```
 
 #### Run command inside "mysql_master"
